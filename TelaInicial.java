@@ -1,20 +1,22 @@
-package PI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import javafx.scene.layout.Border;
-
 import java.awt.*;
 import java.awt.event.*;
 
-public class TelaInicial extends JFrame{
+public class TelaInicial extends JFrame implements ActionListener{
     private JLabel logo, subtitulo;
     private ImageIcon imgLogo;
-
+    //Criando os botões
+    JButton jogar;
+    JButton ranking;
+    JButton biblioteca;
+    JButton sair;
 
 
     TelaInicial() {
+        super("PyPiPair");
         //Montando o painel do logo
         JPanel painelTelaInicial = new JPanel(new BorderLayout());
         painelTelaInicial.setBackground(new Color(217, 255, 180));
@@ -31,11 +33,7 @@ public class TelaInicial extends JFrame{
         painelBotoes.setLayout(caixaBotoes);
         painelBotoes.setBackground(new Color(217, 255, 180));
 
-        //Criando os botões
-        JButton jogar;
-        JButton ranking;
-        JButton biblioteca;
-        JButton sair;
+
 
         jogar = new JButton("JOGAR"){{
             setSize(500, 75);
@@ -82,7 +80,11 @@ public class TelaInicial extends JFrame{
             setBorderPainted(false);
             }
         };
-        
+
+        jogar.addActionListener(this);
+        biblioteca.addActionListener(this);
+        ranking.addActionListener(this);
+        sair.addActionListener(this);
             
 
         //Adicionando os botões ao painel
@@ -108,5 +110,11 @@ public class TelaInicial extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == jogar){
+            this.setVisible(false);
+            new TelaCartasFacil().setVisible(true);
+        }
+    }
 }
