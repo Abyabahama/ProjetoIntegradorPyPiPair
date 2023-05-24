@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
+import java.util.List;
+import java.util.Arrays;
 
 public class TelaCartasFacil extends JFrame implements ActionListener{
 
@@ -12,6 +14,10 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     JButton menu;
     JLabel nivel, pontos, tempo;
     Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8;
+    Carta cartaSelecionada1;
+    Carta cartaSelecionada2; 
+    List<String> respostas;
+    private int paresEncontrados = 0;
 
 
 
@@ -33,6 +39,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelTopo.setLayout(caixaTopo);
         painelTopo.add(logo);
         painelTopo.add(Box.createHorizontalGlue());
+
 
         
         //Atributos do botão menu
@@ -81,16 +88,19 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
 
+        //Criação da lista de respostas
+        List<String> respostas = Arrays.asList("for", "while", "loop", "if", "while", "loop", "for", "if");
 
-        //Criação e posicionamento das cartas do jogo
-        carta1 = new Carta("1");
-        carta2 = new Carta("2");
-        carta3 = new Carta("3");
-        carta4 = new Carta("4");
-        carta5 = new Carta("5");
-        carta6 = new Carta("6");
-        carta7 = new Carta("7");
-        carta8 = new Carta("8");
+        //Criação, posicionamento e preenchimento das cartas do jogo
+        this.respostas = respostas;
+        carta1 = new Carta(respostas.get(0));
+        carta2 = new Carta(respostas.get(1));
+        carta3 = new Carta(respostas.get(2));
+        carta4 = new Carta(respostas.get(3));
+        carta5 = new Carta(respostas.get(4));
+        carta6 = new Carta(respostas.get(5));
+        carta7 = new Carta(respostas.get(6));
+        carta8 = new Carta(respostas.get(7));
 
         //Aplicando actionListener às cartas e botões 
         carta1.addActionListener(this);
@@ -128,11 +138,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
-        
-
-
-
-        
+              
 
 
 
@@ -149,40 +155,41 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(false);
+
+       
     }
+    ClickedButton clickedButton = new ClickedButton();
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == carta1){
-            carta1.virarCarta();   
+        Carta cartaSelecionada = (Carta) e.getSource();
+    
+        if (cartaSelecionada.isVirada()) {
+            cartaSelecionada.virarCarta();
+    
+            if (clickedButton.getCarta1() == null) {
+                clickedButton.setCarta1(cartaSelecionada);
+            } else if (clickedButton.getCarta2() == null) {
+                clickedButton.setCarta2(cartaSelecionada);
+    
+                if (clickedButton.verificarPar()) {
+                    // Par correto
+                    JOptionPane.showMessageDialog(this, "Você venceu!");
+                    // Implemente a lógica desejada quando o par correto for encontrado
+    
+                    // Reinicie as cartas, se necessário
+                    clickedButton.desvirarCartas();
+                } else {
+                    // Par incorreto
+                    Timer timer = new Timer(1000, new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            clickedButton.desvirarCartas();
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
         }
-        else if (e.getSource() == carta2){
-            carta2.virarCarta();
-            
-        }
-        else if (e.getSource() == carta3){
-            carta3.virarCarta();
-            
-        }
-        else if (e.getSource() == carta4){
-            carta4.virarCarta();
-            
-        }
-        else if (e.getSource() == carta5){
-            carta5.virarCarta();
-            
-        }
-        else if (e.getSource() == carta6){
-            carta6.virarCarta();
-            
-        }
-        else if (e.getSource() == carta7){
-            carta7.virarCarta();
-            
-        }
-        else if (e.getSource() == carta8){
-            carta8.virarCarta();
-            
-        }
-            
     }
+    
 }
 

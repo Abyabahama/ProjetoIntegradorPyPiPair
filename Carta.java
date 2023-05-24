@@ -10,11 +10,12 @@ public class Carta extends JButton{
 
     
     Carta(String resposta) {
-        super("Verso");
+        super("");
         this.resposta = resposta;
         setBackground(new Color(207, 54, 196));
         setForeground(new Color(222, 203, 35));
         virada = true;
+        
 
         setFocusPainted(false);
         setFont(new Font("Roboto", Font.BOLD, 30));
@@ -40,14 +41,13 @@ public class Carta extends JButton{
     
 
     public void virarCarta() {
-    if (virada == true) {
-        setText(resposta);
-        setVirada(false);
-    }
-    else {
-        setText("Verso");
-        setVirada(true);
-    }
+        if (isVirada()) {
+            setText(getResposta());
+            setVirada(false);
+        } else {
+            setText("");
+            setVirada(true);
+        }
     }
 
 
