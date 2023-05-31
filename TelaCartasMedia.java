@@ -7,7 +7,7 @@ import javax.swing.border.Border;
 import java.util.List;
 import java.util.Arrays;
 
-public class TelaCartasFacil extends JFrame implements ActionListener{
+public class TelaCartasMedia extends JFrame implements ActionListener{
 
     ImageIcon imgLogo;
     JLabel logo;
@@ -22,7 +22,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
 
 
 
-    TelaCartasFacil() {
+    TelaCartasMedia() {
         super("PyPiPair");
         
         //Montando o painel do logo
@@ -85,11 +85,12 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelPontos.add(tempo, new Float(1));
 
         //Criação da área de cartas do jogo
-        JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
+        JPanel painelCartas = new JPanel(new GridLayout(8, 10, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("fluxograma", "chapin", "pseudocódigo", "chapin", "caso de uso", "caso de uso", "fluxograma", "pseudocódigo");
+        List<String> respostas = Arrays.asList("replace", "sub", "trocar", "reset", "reset", "change", "substituir", "sub",
+        "substituir","trocar","change","replace");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
@@ -101,6 +102,8 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         carta6 = new Carta(respostas.get(5));
         carta7 = new Carta(respostas.get(6));
         carta8 = new Carta(respostas.get(7));
+       
+       
 
         
 
@@ -113,6 +116,8 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         carta6.addActionListener(this);
         carta7.addActionListener(this);
         carta8.addActionListener(this);
+       
+       
 
 
         menu.addActionListener(this);
@@ -140,6 +145,20 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
+
+
+
+
+
+       
+
+        
+
+
+
+        
+
+        
               
 
 
@@ -160,7 +179,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
 
        
     }
-    ClickedButton clickedButton = new ClickedButton();
+    ClickedButtonMedia clickedButton = new ClickedButtonMedia();
     public void actionPerformed(ActionEvent e) {
         Carta cartaSelecionada = (Carta) e.getSource();
     
@@ -175,8 +194,8 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
                 if (clickedButton.verificarPar()) {
                     // Par correto
                     JOptionPane.showMessageDialog(this, "Você venceu!");
-                    TelaCartasFacil1 novaTelaFacil1 = new TelaCartasFacil1();
-                    novaTelaFacil1.setVisible(true);
+                    TelaCartasMedia1 novaTelaMedia1 = new TelaCartasMedia1();
+                    novaTelaMedia1.setVisible(true);
                     dispose(); // Fechar a tela atual
                     
     
@@ -197,4 +216,5 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     }
     
 }
+
 

@@ -1,4 +1,4 @@
-public class ClickedButton {
+public class ClickedButtonMedia1 {
     private Carta carta1;
     private Carta carta2;
 
@@ -20,7 +20,7 @@ public class ClickedButton {
 
     public boolean verificarPar() {
         if (carta1 != null && carta2 != null) {
-            if (carta1.getResposta().equals("fluxograma") && carta2.getResposta().equals("fluxograma")) {
+            if (carta1.getResposta().equals("if/else") && carta2.getResposta().equals("if/else")) {
                 // Par correto com a resposta "for"
                 return true;
             } else {
@@ -41,3 +41,6 @@ public class ClickedButton {
         }
     }
 }
+
+
+

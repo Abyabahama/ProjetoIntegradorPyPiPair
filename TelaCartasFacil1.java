@@ -7,7 +7,7 @@ import javax.swing.border.Border;
 import java.util.List;
 import java.util.Arrays;
 
-public class TelaCartasFacil extends JFrame implements ActionListener{
+public class TelaCartasFacil1 extends JFrame implements ActionListener{
 
     ImageIcon imgLogo;
     JLabel logo;
@@ -22,7 +22,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
 
 
 
-    TelaCartasFacil() {
+    TelaCartasFacil1() {
         super("PyPiPair");
         
         //Montando o painel do logo
@@ -89,7 +89,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("fluxograma", "chapin", "pseudocódigo", "chapin", "caso de uso", "caso de uso", "fluxograma", "pseudocódigo");
+        List<String> respostas = Arrays.asList("quadrado", "triângulo", "losango", "quadrado", "triângulo", "losango", "circulo", "circulo");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
@@ -160,7 +160,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
 
        
     }
-    ClickedButton clickedButton = new ClickedButton();
+    ClickedButton1 clickedButton = new ClickedButton1();
     public void actionPerformed(ActionEvent e) {
         Carta cartaSelecionada = (Carta) e.getSource();
     
@@ -175,15 +175,14 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
                 if (clickedButton.verificarPar()) {
                     // Par correto
                     JOptionPane.showMessageDialog(this, "Você venceu!");
-                    TelaCartasFacil1 novaTelaFacil1 = new TelaCartasFacil1();
-                    novaTelaFacil1.setVisible(true);
-                    dispose(); // Fechar a tela atual
-                    
+                    TelaCartasFacil2 novaTelaFacil2 = new TelaCartasFacil2();
+                    novaTelaFacil2.setVisible(true);
+                    dispose();
     
                     // Reinicie as cartas, se necessário
                     clickedButton.desvirarCartas();
                 } else {
-                    // Par incorreto
+                    //Par incorreto
                     Timer timer = new Timer(1000, new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             clickedButton.desvirarCartas();
@@ -197,4 +196,3 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     }
     
 }
-
