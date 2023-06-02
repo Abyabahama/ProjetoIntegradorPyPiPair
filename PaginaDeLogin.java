@@ -15,9 +15,9 @@ public class PaginaDeLogin extends JFrame implements ActionListener {
 
     PaginaDeLogin() {
         JPanel TelaDeLogin = new JPanel(new BorderLayout());
-        TelaDeLogin.setBackground(new Color(217, 255, 180)); 
+        TelaDeLogin.setBackground(new Color(217, 255, 180));
         ImageIcon Logo = new ImageIcon(getClass().getResource("image.png"));
-        Image image = Logo.getImage().getScaledInstance(500, 350, Image.SCALE_SMOOTH); 
+        Image image = Logo.getImage().getScaledInstance(500, 350, Image.SCALE_SMOOTH);
         Logo = new ImageIcon(image);
         JLabel logo = new JLabel(Logo);
         logo.setSize(242, 160);
@@ -45,7 +45,7 @@ public class PaginaDeLogin extends JFrame implements ActionListener {
             }
         };
 
-        Email.setPreferredSize(new Dimension(500, 75));
+        Email.setPreferredSize(new Dimension(505, 50));
         Email.setMaximumSize(Email.getPreferredSize());
         Email.setFont(new Font("Felicidade", Font.BOLD, 30));
         Email.setAlignmentX(CENTER_ALIGNMENT);
@@ -73,18 +73,6 @@ public class PaginaDeLogin extends JFrame implements ActionListener {
         painel.add(Email);
         painel.add(Box.createRigidArea(new Dimension(1, 20)));
 
-        SemConta = new JLabel("Esqueceu o usuário ?") {{
-            setSize(320, 1);
-            setMaximumSize(getSize());
-            setFont(new Font("Felicidade", Font.BOLD, 24)); // Alterar o tamanho da fonte para 24
-            setAlignmentX(CENTER_ALIGNMENT);
-        }};
-
-        // Espaço vertical rígido antes do rótulo "esqueceu o usuário ?"
-        painel.add(Box.createRigidArea(new Dimension(1, 20)));
-        painel.add(SemConta);
-        painel.add(Box.createRigidArea(new Dimension(1, 20)));
-
         Entrar = new JButton("Entrar") {{
             setSize(500, 75);
             setMaximumSize(getSize());
@@ -100,6 +88,20 @@ public class PaginaDeLogin extends JFrame implements ActionListener {
         // Espaço vertical rígido antes do botão "Entrar"
         painel.add(Box.createRigidArea(new Dimension(1, 20)));
         painel.add(Entrar);
+        painel.add(Box.createRigidArea(new Dimension(1, 20)));
+
+        SemConta = new JLabel("Esqueceu o usuário ?") {{
+            setSize(320, 1);
+            setMaximumSize(getSize());
+            setFont(new Font("Felicidade", Font.BOLD, 24)); // Alterar o tamanho da fonte para 24
+            setAlignmentX(CENTER_ALIGNMENT);
+        }};
+
+        // Espaço vertical rígido antes do rótulo "esqueceu o usuário ?"
+        painel.add(Box.createRigidArea(new Dimension(1, 20)));
+        painel.add(Box.createVerticalGlue());
+        painel.add(SemConta);
+        painel.add(Box.createVerticalGlue());
         painel.add(Box.createRigidArea(new Dimension(1, 20)));
 
         Criar_Conta = new JButton("Criar conta") {{
@@ -129,13 +131,20 @@ public class PaginaDeLogin extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Entrar) {
-            JOptionPane.showMessageDialog(this, "Login Efetuado com Sucesso", "login", JOptionPane.PLAIN_MESSAGE);
+            if (Email.getText().isEmpty() || Email.getText().equals("Email:")) {
+                JOptionPane.showMessageDialog(this, "Por favor, insira seu e-mail.", "Login", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Login Efetuado com Sucesso", "Login", JOptionPane.PLAIN_MESSAGE);
+            }
         }
-
+    
         if (e.getSource() == Criar_Conta) {
-            JOptionPane.showMessageDialog(this, "Crie sua conta abaixo", "cadastro", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Crie sua conta abaixo", "Cadastro", JOptionPane.PLAIN_MESSAGE);
         }
     }
+    
+    
+    
 
     public static void main(String[] args) {
         new PaginaDeLogin();
