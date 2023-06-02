@@ -1,14 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaCadastro extends JFrame implements ActionListener{
+public class TelaCadastro extends JFrame implements ActionListener {
     
-    // declarando os componentes das página como variáveis globais
     private JLabel logo;
     private ImageIcon imgLogo;
     JButton buttonCadastrar;
@@ -17,30 +14,22 @@ public class TelaCadastro extends JFrame implements ActionListener{
     JTextField textEmail;
     JTextField confirmarEmail;
 
-    //criando a página TelaCadatro
-    TelaCadastro(){
-        
-        //criando o painel principal da tela
+    TelaCadastro() {
         JPanel painelTelaCadastro = new JPanel(new BorderLayout());
         painelTelaCadastro.setBackground(new Color(217, 255, 180));
-
-        // criando e adicionando o logo no painel
+        
         imgLogo = new ImageIcon("CobraLogo.png");
         logo = new JLabel(imgLogo);
         logo.setPreferredSize(new Dimension(202, 202));
         painelTelaCadastro.add(logo, BorderLayout.NORTH);
         
-        //criando o painel da caixaCadastro
         JPanel painelCadastro = new JPanel();
         BoxLayout caixaCadastro = new BoxLayout(painelCadastro, BoxLayout.Y_AXIS);
         painelCadastro.setLayout(caixaCadastro);
         painelCadastro.setBackground(new Color(217, 255, 180));
         painelTelaCadastro.add(painelCadastro, BorderLayout.CENTER);
 
-        //criando os componentes do painelCadastro
-
-        // Campos de Input(texto)
-        JLabel textCadastro = new JLabel(){{
+        JLabel textCadastro = new JLabel() {{
             setSize(new Dimension(500, 50));
             setMaximumSize(getSize());
             setAlignmentX(CENTER_ALIGNMENT);
@@ -48,62 +37,118 @@ public class TelaCadastro extends JFrame implements ActionListener{
             setFont(new Font("Poppins", Font.BOLD, 60));
         }};
 
-
-        
-        textUsuario = new JTextField(){{
+        textUsuario = new JTextField("Usuário(RA)") {{
             setSize(new Dimension(500, 50));
             setMaximumSize(getSize());
             setAlignmentX(CENTER_ALIGNMENT);
             setFont(new Font("Inter", Font.PLAIN, 20));
-            setText("usuário(RA)");
-
+            addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    if (getText().equals("Usuário(RA)")) {
+                        setText("");
+                    }
+                }
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    if (getText().isEmpty()) {
+                        setText("Usuário(RA)");
+                    }
+                }
+            });
         }};
     
-        textNome = new JTextField(){{
+        textNome = new JTextField("Nome") {{
             setSize(new Dimension(500, 50));
             setMaximumSize(getSize());
             setAlignmentX(CENTER_ALIGNMENT);
             setFont(new Font("Inter", Font.PLAIN, 20));
-            setText("Nome");
-            
+            addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    if (getText().equals("Nome")) {
+                        setText("");
+                    }
+                }
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    if (getText().isEmpty()) {
+                        setText("Nome");
+                    }
+                }
+            });
         }};
         
-        textEmail = new JTextField(){{
-            
+        textEmail = new JTextField("E-mail") {{
             setSize(new Dimension(500, 50));
             setMaximumSize(getSize());
             setAlignmentX(CENTER_ALIGNMENT);
             setFont(new Font("Inter", Font.PLAIN, 20));
-            setText("e-mail");
-
-            
+            addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    if (getText().equals("E-mail")) {
+                        setText("");
+                    }
+                }
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    if (getText().isEmpty()) {
+                        setText("E-mail");
+                    }
+                }
+            });
         }};
         
-        confirmarEmail = new JTextField(){{
+        confirmarEmail = new JTextField("Confirmar e-mail") {{
             setSize(new Dimension(500, 50));
             setMaximumSize(getSize());
             setAlignmentY(CENTER_ALIGNMENT);
-            setText("confirmar e-mail");
             setFont(new Font("Inter", Font.PLAIN, 20));
-            
+            addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    if (getText().equals("Confirmar e-mail")) {
+                        setText("");
+                    }
+                }
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    if (getText().isEmpty()) {
+                        setText("Confirmar e-mail");
+                    }
+                }
+            });
         }};
 
-        // botão cadastrar
-
-        buttonCadastrar = new  JButton("Cadastrar"){{
-            setSize(500,75);
-            setMaximumSize(getSize());
-            setAlignmentX(CENTER_ALIGNMENT);
-            setBackground(new Color(127,187,243));
-            setFont(new Font("Poppins", Font.BOLD, 30));
-            setForeground(Color.white);
-            setFocusPainted(false);
-            setBorderPainted(false);
-        }};
-        buttonCadastrar.addActionListener(this);
-
-        //Adiconando os componentes ao painelCadatro
+        buttonCadastrar = new JButton("Cadastrar");
+        buttonCadastrar.setPreferredSize(new Dimension(500, 75));
+        buttonCadastrar.setMaximumSize(buttonCadastrar.getPreferredSize());
+        buttonCadastrar.setAlignmentX(CENTER_ALIGNMENT);
+        buttonCadastrar.setBackground(new Color(127, 187, 243));
+        buttonCadastrar.setFont(new Font("Poppins", Font.BOLD, 30));
+        buttonCadastrar.setForeground(Color.white);
+        buttonCadastrar.setFocusPainted(false);
+        buttonCadastrar.setBorderPainted(false);
+        buttonCadastrar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String usuario = textUsuario.getText().trim();
+                String nome = textNome.getText().trim();
+                String email = textEmail.getText().trim();
+                String confirmarEmailText = confirmarEmail.getText().trim();
         
+                if (usuario.isEmpty() || nome.isEmpty() || email.isEmpty() || confirmarEmailText.isEmpty()) {
+                    JOptionPane.showMessageDialog(TelaCadastro.this,
+                            "Por favor, preencha todos os campos.",
+                            "Campos obrigatórios vazios",
+                            JOptionPane.WARNING_MESSAGE);
+                } else if (!email.equals(confirmarEmailText)) {
+                    JOptionPane.showMessageDialog(TelaCadastro.this,
+                            "Os campos de e-mail não coincidem.",
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(TelaCadastro.this,
+                            "Conta criada com sucesso!",
+                            "Status do Cadastro",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        });
+        
+
         painelCadastro.add(Box.createRigidArea(new Dimension(1, 50)));
         painelCadastro.add(textCadastro);
         painelCadastro.add(Box.createRigidArea(new Dimension(1, 30)));
@@ -116,32 +161,22 @@ public class TelaCadastro extends JFrame implements ActionListener{
         painelCadastro.add(confirmarEmail);
         painelCadastro.add(Box.createRigidArea(new Dimension(1, 50)));
         painelCadastro.add(buttonCadastrar);
-        
-        //Adicionando o painelCadastro ao painel principal painelTelaCadastro
+
         painelTelaCadastro.add(painelCadastro, BorderLayout.CENTER);
 
-        //criando o container para todos os componentes da TelaCadastro que retornará o painelTelaCadastro
         Container caixa = getContentPane();
-
-        //adiconando o painel principal ao container
         caixa.add(painelTelaCadastro);
 
-         //Finalizando
         setSize(1366, 768);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-
     }
      
     @Override
     public void actionPerformed(ActionEvent e) {
-
-    if (e.getSource() == buttonCadastrar){
-
-        JOptionPane.showMessageDialog(this, "Conta Criada com Sucesso","Status Cadastro", JOptionPane.PLAIN_MESSAGE);
-        
+        if (e.getSource() == buttonCadastrar) {
+            JOptionPane.showMessageDialog(this, "Conta Criada com Sucesso", "Status Cadastro", JOptionPane.PLAIN_MESSAGE);
+        }
     }
-    
-}
 }
