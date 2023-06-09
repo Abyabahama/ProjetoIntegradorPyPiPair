@@ -113,8 +113,12 @@ public class TelaInicial extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jogar){
-            this.setVisible(false);
+            this.dispose();
             new TelaCartasFacil().setVisible(true);
+        }
+        else if (e.getSource() == ranking) {
+            this.dispose();
+            new Rank().setVisible(true);
         }
     }
 }

@@ -3,7 +3,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
-import javafx.scene.chart.PieChart.Data;
+
 
 import java.awt.Font;
 import java.awt.ScrollPane;
@@ -48,7 +48,7 @@ public class Rank extends JFrame implements ActionListener{
             setMaximumSize(getSize());
             setMinimumSize(getSize());
             setFocusPainted(false);
-            setBorderPainted(false);
+            setBorderPainted(true);
         }};
         menu.addActionListener(this);
 
@@ -56,6 +56,7 @@ public class Rank extends JFrame implements ActionListener{
         painelTopo.add(logo);
         painelTopo.add(Box.createHorizontalGlue());
         painelTopo.add(menu);
+        painelTopo.add(Box.createRigidArea(new Dimension(20, 0)));
         
         JPanel painelRank = new JPanel();
         BoxLayout caixaRank = new BoxLayout(painelRank,BoxLayout.Y_AXIS);
@@ -120,7 +121,7 @@ public class Rank extends JFrame implements ActionListener{
         setSize(1366, 768);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(false);
+        setVisible(true);
     }
 
 
@@ -131,7 +132,7 @@ public class Rank extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == menu) {
             this.setVisible(false);
-            new TelaInicial().setVisible(true);
+            new TelaInicial();
         }
     }
 }

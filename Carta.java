@@ -18,7 +18,7 @@ public class Carta extends JButton{
         
 
         setFocusPainted(false);
-        setFont(new Font("Roboto", Font.BOLD, 30));
+        setFont(new Font("Roboto", Font.BOLD, 20));
         setBorder(BorderFactory.createLineBorder(new Color(222, 203, 35), 3, true));
     }
 

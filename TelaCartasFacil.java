@@ -2,8 +2,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JFrame;
 import javax.swing.border.Border;
+
+import org.w3c.dom.events.Event;
+
 import java.util.List;
 import java.util.Arrays;
 
@@ -13,6 +15,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     JLabel logo;
     JButton menu;
     JLabel nivel, pontos, tempo;
+    JLabel pergunta;
     Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8;
     Carta cartaSelecionada1;
     Carta cartaSelecionada2; 
@@ -61,36 +64,45 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         RelativeLayout caixaPontos = new RelativeLayout(RelativeLayout.X_AXIS, 5);
         painelPontos.setBackground((new Color(217, 255, 180)));
         painelPontos.setLayout(caixaPontos);
-        painelJogo.add(painelPontos, BorderLayout.NORTH);
-
         //Instanciamento e definição do texto dos labels de pontuação, tempo, e dificuldade
         nivel = new JLabel("Dificuldade: Fácil");
         nivel.setHorizontalAlignment(SwingConstants.CENTER);
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
-
+        
         pontos = new JLabel("Pontuação: Placeholder");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
-
+        
         tempo = new JLabel("Tempo: 00:00");
         tempo.setHorizontalAlignment(SwingConstants.CENTER);
         tempo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         tempo.setFont(new Font("Roboto", Font.BOLD, 30));
+        
+        //Criação do painel de pontos e pergunta
+        JPanel painelInfo = new JPanel(new BorderLayout());
 
         //Posicionamento dos Labels de pontação, tempo, e dificuldade 
         painelPontos.add(nivel, new Float(1));
         painelPontos.add(pontos, new Float(1));
         painelPontos.add(tempo, new Float(1));
-
+        
+        //Criação da área pergunta do jogo
+        JPanel painelPergunta = new JPanel(new FlowLayout());
+        painelPergunta.setBackground((new Color(217, 255, 180)));
+        JLabel pergunta = new JLabel("Qual o método que podemos usar para contar o número de caracteres de uma string em python ?");
+        pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
+        
+        painelPergunta.add(pergunta);
+        
         //Criação da área de cartas do jogo
         JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
-
+        
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("fluxograma", "chapin", "pseudocódigo", "chapin", "caso de uso", "caso de uso", "fluxograma", "pseudocódigo");
-
+        List<String> respostas = Arrays.asList("len()", "count()", "size()", "count()", "length()", "length()", "len()", "size()");
+        
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
         carta1 = new Carta(respostas.get(0));
@@ -101,9 +113,9 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         carta6 = new Carta(respostas.get(5));
         carta7 = new Carta(respostas.get(6));
         carta8 = new Carta(respostas.get(7));
-
         
-
+        
+        
         //Aplicando actionListener às cartas e botões 
         carta1.addActionListener(this);
         carta2.addActionListener(this);
@@ -113,15 +125,14 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         carta6.addActionListener(this);
         carta7.addActionListener(this);
         carta8.addActionListener(this);
-
+        
 
         menu.addActionListener(this);
 
-
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
-        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));        
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
@@ -140,16 +151,20 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
-              
-
-
-
-
+        
+        
+        
+        
+        
+        
+        painelInfo.add(painelPergunta, BorderLayout.SOUTH);
+        painelInfo.add(painelPontos, BorderLayout.NORTH);
+        painelJogo.add(painelInfo, BorderLayout.NORTH);
         painelJogo.add(painelCartas, BorderLayout.CENTER);
         painel.add(painelTopo, BorderLayout.NORTH);
         painel.add(painelJogo, BorderLayout.CENTER);
         Container caixa = getContentPane(); 
-    
+        
         caixa.add(painel);
     
         //Finalizando
@@ -162,6 +177,11 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     }
     ClickedButton clickedButton = new ClickedButton();
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == menu) {
+            this.dispose();
+            new TelaInicial();
+        }
         Carta cartaSelecionada = (Carta) e.getSource();
     
         if (cartaSelecionada.isVirada()) {
