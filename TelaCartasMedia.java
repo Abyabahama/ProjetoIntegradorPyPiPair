@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JFrame;
 import javax.swing.border.Border;
 import java.util.List;
 import java.util.Arrays;
@@ -13,10 +12,11 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
     JLabel logo;
     JButton menu;
     JLabel nivel, pontos, tempo;
-    Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8;
+    Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12;
     Carta cartaSelecionada1;
     Carta cartaSelecionada2; 
     List<String> respostas;
+    JLabel pergunta;
     private int paresEncontrados = 0;
 
 
@@ -64,7 +64,7 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
         painelJogo.add(painelPontos, BorderLayout.NORTH);
 
         //Instanciamento e definição do texto dos labels de pontuação, tempo, e dificuldade
-        nivel = new JLabel("Dificuldade: Fácil");
+        nivel = new JLabel("Dificuldade: Médio");
         nivel.setHorizontalAlignment(SwingConstants.CENTER);
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -79,13 +79,25 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
         tempo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         tempo.setFont(new Font("Roboto", Font.BOLD, 30));
 
+        //Criação do painel de pontos e pergunta
+        JPanel painelInfo = new JPanel(new BorderLayout());
+
         //Posicionamento dos Labels de pontação, tempo, e dificuldade 
         painelPontos.add(nivel, new Float(1));
         painelPontos.add(pontos, new Float(1));
         painelPontos.add(tempo, new Float(1));
 
+
+        //Criação da área pergunta do jogo
+        JPanel painelPergunta = new JPanel(new FlowLayout());
+        painelPergunta.setBackground((new Color(217, 255, 180)));
+        JLabel pergunta = new JLabel("Qual a função utilizada para substituir um caractere por outro em uma string em Python?");
+        pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
+        
+        painelPergunta.add(pergunta);
+
         //Criação da área de cartas do jogo
-        JPanel painelCartas = new JPanel(new GridLayout(8, 10, 25, 25));
+        JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
@@ -102,6 +114,11 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
         carta6 = new Carta(respostas.get(5));
         carta7 = new Carta(respostas.get(6));
         carta8 = new Carta(respostas.get(7));
+        carta9 = new Carta(respostas.get(8));
+        carta10 = new Carta(respostas.get(9));
+        carta11 = new Carta(respostas.get(10));
+        carta12 = new Carta(respostas.get(11));
+        
        
        
 
@@ -123,7 +140,7 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
         menu.addActionListener(this);
 
 
-        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+       painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
@@ -146,6 +163,8 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
 
+      
+
 
 
 
@@ -164,10 +183,13 @@ public class TelaCartasMedia extends JFrame implements ActionListener{
 
 
 
+        painelInfo.add(painelPergunta, BorderLayout.SOUTH);
+        painelInfo.add(painelPontos, BorderLayout.NORTH);
+        painelJogo.add(painelInfo, BorderLayout.NORTH);
         painelJogo.add(painelCartas, BorderLayout.CENTER);
         painel.add(painelTopo, BorderLayout.NORTH);
         painel.add(painelJogo, BorderLayout.CENTER);
-        Container caixa = getContentPane(); 
+        Container caixa = getContentPane();  
     
         caixa.add(painel);
     

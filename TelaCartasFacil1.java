@@ -2,8 +2,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JFrame;
 import javax.swing.border.Border;
+
+import org.w3c.dom.events.Event;
+
 import java.util.List;
 import java.util.Arrays;
 
@@ -16,6 +18,7 @@ public class TelaCartasFacil1 extends JFrame implements ActionListener{
     Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8;
     Carta cartaSelecionada1;
     Carta cartaSelecionada2; 
+    JLabel pergunta;
     List<String> respostas;
     private int paresEncontrados = 0;
 
@@ -79,10 +82,21 @@ public class TelaCartasFacil1 extends JFrame implements ActionListener{
         tempo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         tempo.setFont(new Font("Roboto", Font.BOLD, 30));
 
+        //Criação do painel de pontos e pergunta
+        JPanel painelInfo = new JPanel(new BorderLayout());
+
         //Posicionamento dos Labels de pontação, tempo, e dificuldade 
         painelPontos.add(nivel, new Float(1));
         painelPontos.add(pontos, new Float(1));
         painelPontos.add(tempo, new Float(1));
+
+        //Criação da área pergunta do jogo
+        JPanel painelPergunta = new JPanel(new FlowLayout());
+        painelPergunta.setBackground((new Color(217, 255, 180)));
+        JLabel pergunta = new JLabel("Qual é o símbolo utilizado em um fluxograma para representar uma decisão?");
+        pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
+        
+        painelPergunta.add(pergunta);
 
         //Criação da área de cartas do jogo
         JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
@@ -145,6 +159,9 @@ public class TelaCartasFacil1 extends JFrame implements ActionListener{
 
 
 
+        painelInfo.add(painelPergunta, BorderLayout.SOUTH);
+        painelInfo.add(painelPontos, BorderLayout.NORTH);
+        painelJogo.add(painelInfo, BorderLayout.NORTH);
         painelJogo.add(painelCartas, BorderLayout.CENTER);
         painel.add(painelTopo, BorderLayout.NORTH);
         painel.add(painelJogo, BorderLayout.CENTER);
