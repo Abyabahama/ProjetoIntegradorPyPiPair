@@ -2,12 +2,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.border.Border;
 
-import org.w3c.dom.events.Event;
 
 import java.util.List;
 import java.util.Arrays;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class TelaCartasFacil extends JFrame implements ActionListener{
 
@@ -21,12 +21,18 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
     Carta cartaSelecionada2; 
     List<String> respostas;
     private int paresEncontrados = 0;
+    
 
+    
+
+    
 
 
 
     TelaCartasFacil() {
+        
         super("PyPiPair");
+
         
         //Montando o painel do logo
         JPanel painel = new JPanel(new BorderLayout());
@@ -70,7 +76,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
         
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 0");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -172,18 +178,20 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(false);
-
        
     }
+    
+    
+    
     ClickedButton clickedButton = new ClickedButton();
     public void actionPerformed(ActionEvent e) {
-
+        
         if (e.getSource() == menu) {
             this.dispose();
             new TelaInicial();
         }
         Carta cartaSelecionada = (Carta) e.getSource();
-    
+        
         if (cartaSelecionada.isVirada()) {
             cartaSelecionada.virarCarta();
     
@@ -191,7 +199,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
                 clickedButton.setCarta1(cartaSelecionada);
             } else if (clickedButton.getCarta2() == null) {
                 clickedButton.setCarta2(cartaSelecionada);
-    
+                
                 if (clickedButton.verificarPar()) {
                     // Par correto
                     JOptionPane.showMessageDialog(this, "Você venceu!");
@@ -199,7 +207,7 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
                     novaTelaFacil1.setVisible(true);
                     dispose(); // Fechar a tela atual
                     
-    
+                    
                     // Reinicie as cartas, se necessário
                     clickedButton.desvirarCartas();
                 } else {
@@ -216,5 +224,12 @@ public class TelaCartasFacil extends JFrame implements ActionListener{
         }
     }
     
+
+        
+
+    
+    
+    
 }
+
 

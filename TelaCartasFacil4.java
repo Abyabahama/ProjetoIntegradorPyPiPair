@@ -69,7 +69,7 @@ public class TelaCartasFacil4 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 40");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -90,7 +90,7 @@ public class TelaCartasFacil4 extends JFrame implements ActionListener{
         //Criação da área pergunta do jogo
         JPanel painelPergunta = new JPanel(new FlowLayout());
         painelPergunta.setBackground((new Color(217, 255, 180)));
-        JLabel pergunta = new JLabel("Qual a função utilizada para contar o número de caracteres em uma string em Python?");
+        JLabel pergunta = new JLabel("Qual a função em python que devolve um iterável ordenado");
         pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
         
         painelPergunta.add(pergunta);
@@ -100,7 +100,7 @@ public class TelaCartasFacil4 extends JFrame implements ActionListener{
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("sort", "remove", "length()", "length()", "len()", "len()", "remove", "sort");
+        List<String> respostas = Arrays.asList("sort", "remove", "length()", "length()", "sorted", "sorted", "remove", "sort");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;

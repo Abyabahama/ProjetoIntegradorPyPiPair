@@ -71,19 +71,7 @@ public class Rank extends JFrame implements ActionListener{
         //Trocar por loop que obtém dados do banco de dados para montar a tabela
         String[][] dados = {
             {"1", "1","Juninho", "10000"},
-            {"1", "2", "Jaiminho", "9000"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"},
-            {"1", "3", "Débora", "1"}
+            {"1", "2", "Jaiminho", "9000"}
         };
 
         String[] colunas = {"Nivel", "Ranking", "Nome", "Pontuação"};

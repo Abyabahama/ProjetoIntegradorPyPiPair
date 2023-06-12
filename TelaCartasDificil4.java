@@ -69,7 +69,7 @@ public class TelaCartasDificil4 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 350");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -88,7 +88,7 @@ public class TelaCartasDificil4 extends JFrame implements ActionListener{
         painelPontos.add(tempo, new Float(1));
 
         
-    //Criação da área pergunta do jogo
+        //Criação da área pergunta do jogo
         JPanel painelPergunta = new JPanel(new FlowLayout());
         painelPergunta.setBackground((new Color(217, 255, 180)));
         JLabel pergunta = new JLabel("É uma forma de coleção de dados em que se guarda uma chave e um valor correspondente:");
@@ -101,7 +101,7 @@ public class TelaCartasDificil4 extends JFrame implements ActionListener{
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("argumentos", "classes", "objetos", "classes", "argumentos", "repetições", "laços", "laços", "objetos", "instâncias", "chaves", "relações", "chaves", "repetições", "relações", "instâncias");
+        List<String> respostas = Arrays.asList("histogramas", "classes", "arquivos", "classes", "histogramas", "repetições", "laços", "laços", "arquivos", "dicionários", "chave/valor", "relações", "chave/valor", "repetições", "relações", "dicionários");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
@@ -213,7 +213,7 @@ public class TelaCartasDificil4 extends JFrame implements ActionListener{
 
        
     }
-    ClickedButtonMedia4 clickedButton = new ClickedButtonMedia4();
+    ClickedButtonDificil4 clickedButton = new ClickedButtonDificil4();
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == menu) {
             this.dispose();
@@ -232,9 +232,9 @@ public class TelaCartasDificil4 extends JFrame implements ActionListener{
                 if (clickedButton.verificarPar()) {
                     // Par correto
                     JOptionPane.showMessageDialog(this, "Você venceu!");
-                    TelaCartasDificil novaTelaDificil = new TelaCartasDificil();
-                    novaTelaDificil.setVisible(true);
-                    dispose(); // Fechar a tela atual
+                    new Rank().setVisible(true);;
+                    this.dispose(); // Fechar a tela atual
+                    
                     
     
                     // Reinicie as cartas, se necessário

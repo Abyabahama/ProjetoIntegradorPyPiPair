@@ -69,7 +69,7 @@ public class TelaCartasMedia1 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 70");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -90,7 +90,7 @@ public class TelaCartasMedia1 extends JFrame implements ActionListener{
         //Criação da área pergunta do jogo
         JPanel painelPergunta = new JPanel(new FlowLayout());
         painelPergunta.setBackground((new Color(217, 255, 180)));
-        JLabel pergunta = new JLabel("Escolha a carta que representa a sintaxe para estrutura de repetição em python?");
+        JLabel pergunta = new JLabel("Escolha a carta que representa a sintaxe para estrutura de decisão em python?");
         pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
         
         painelPergunta.add(pergunta);

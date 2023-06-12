@@ -72,7 +72,7 @@ public class TelaCartasFacil1 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 10");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));

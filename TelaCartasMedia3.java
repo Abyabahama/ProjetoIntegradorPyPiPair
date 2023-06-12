@@ -69,7 +69,7 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 110");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -101,8 +101,8 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("for", "while", "if/else", "maybe", "foreach", "len", "len", "foreach",
-        "for","while","if/else","maybe");
+        List<String> respostas = Arrays.asList("false", "break", "if/else", "stop", "forcestop", "len", "len", "forcestop",
+        "false","break","if/else","stop");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;

@@ -63,12 +63,12 @@ public class TelaCartasDificil3 extends JFrame implements ActionListener{
         painelJogo.add(painelPontos, BorderLayout.NORTH);
 
         //Instanciamento e definição do texto dos labels de pontuação, tempo, e dificuldade
-        nivel = new JLabel("Dificuldade: Fácil");
+        nivel = new JLabel("Dificuldade: Difícil");
         nivel.setHorizontalAlignment(SwingConstants.CENTER);
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 300");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -78,17 +78,27 @@ public class TelaCartasDificil3 extends JFrame implements ActionListener{
         tempo.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         tempo.setFont(new Font("Roboto", Font.BOLD, 30));
 
+        JPanel painelInfo = new JPanel(new BorderLayout());
+
         //Posicionamento dos Labels de pontação, tempo, e dificuldade 
         painelPontos.add(nivel, new Float(1));
         painelPontos.add(pontos, new Float(1));
         painelPontos.add(tempo, new Float(1));
+
+        //Criação da área pergunta do jogo
+        JPanel painelPergunta = new JPanel(new FlowLayout());
+        painelPergunta.setBackground((new Color(217, 255, 180)));
+        JLabel pergunta = new JLabel("Qual dos seguintes possui as seguintes características? \nIterável, não ordenado e não mutável");
+        pergunta.setFont(new Font("Roboto", Font.BOLD, 25));
+        
+        painelPergunta.add(pergunta);
 
         //Criação da área de cartas do jogo
         JPanel painelCartas = new JPanel(new GridLayout(5, 8, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("argumentos", "classes", "objetos", "classes", "argumentos", "repetições", "laços", "laços", "objetos", "instâncias", "chaves", "relações", "chaves", "repetições", "relações", "instâncias");
+        List<String> respostas = Arrays.asList("listas", "arquivos", "arquivos", "objetos", "listas", "conjuntos", "laços", "laços", "objetos", "inteiros", "dicionários", "dados", "dicionários", "conjuntos", "dados", "inteiros");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
@@ -182,7 +192,9 @@ public class TelaCartasDificil3 extends JFrame implements ActionListener{
 
 
 
-
+        painelInfo.add(painelPergunta, BorderLayout.SOUTH);
+        painelInfo.add(painelPontos, BorderLayout.NORTH);
+        painelJogo.add(painelInfo, BorderLayout.NORTH);
         painelJogo.add(painelCartas, BorderLayout.CENTER);
         painel.add(painelTopo, BorderLayout.NORTH);
         painel.add(painelJogo, BorderLayout.CENTER);

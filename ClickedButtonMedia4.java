@@ -20,7 +20,7 @@ public class ClickedButtonMedia4 {
 
     public boolean verificarPar() {
         if (carta1 != null && carta2 != null) {
-            if (carta1.getResposta().equals("operadores ternários") && carta2.getResposta().equals("operadores ternários")) {
+            if (carta1.getResposta().equals("iterável") && carta2.getResposta().equals("iterável")) {
                 // Par correto com a resposta "for"
                 return true;
             } else {

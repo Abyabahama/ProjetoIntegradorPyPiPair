@@ -20,7 +20,7 @@ public class ClickedButtonDificil4 {
 
     public boolean verificarPar() {
         if (carta1 != null && carta2 != null) {
-            if (carta1.getResposta().equals("replace") && carta2.getResposta().equals("replace")) {
+            if (carta1.getResposta().equals("dicionários") && carta2.getResposta().equals("dicionários")) {
                 // Par correto com a resposta "for"
                 return true;
             } else {

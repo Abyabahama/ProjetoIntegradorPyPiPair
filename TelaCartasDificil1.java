@@ -69,7 +69,7 @@ public class TelaCartasDificil1 extends JFrame implements ActionListener{
         nivel.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         nivel.setFont(new Font("Roboto", Font.BOLD, 30));
 
-        pontos = new JLabel("Pontuação: Placeholder");
+        pontos = new JLabel("Pontuação: 200");
         pontos.setHorizontalAlignment(SwingConstants.CENTER);
         pontos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2, true));
         pontos.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -101,7 +101,7 @@ public class TelaCartasDificil1 extends JFrame implements ActionListener{
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
-        List<String> respostas = Arrays.asList("argumentos", "classes", "objetos", "classes", "argumentos", "repetições", "laços", "laços", "objetos", "instâncias", "chaves", "relações", "chaves", "repetições", "relações", "instâncias");
+        List<String> respostas = Arrays.asList("public void", "class", "def", "class", "public void", "function", "laços", "laços", "def", "instâncias", "chaves", "new", "chaves", "function", "new", "instâncias");
 
         //Criação, posicionamento e preenchimento das cartas do jogo
         this.respostas = respostas;
@@ -196,7 +196,7 @@ public class TelaCartasDificil1 extends JFrame implements ActionListener{
 
 
 
-       painelInfo.add(painelPergunta, BorderLayout.SOUTH);
+        painelInfo.add(painelPergunta, BorderLayout.SOUTH);
         painelInfo.add(painelPontos, BorderLayout.NORTH);
         painelJogo.add(painelInfo, BorderLayout.NORTH);
         painelJogo.add(painelCartas, BorderLayout.CENTER);
