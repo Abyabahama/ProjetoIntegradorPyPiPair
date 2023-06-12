@@ -124,6 +124,9 @@ public class TelaInicial extends JFrame implements ActionListener{
             new Rank().setVisible(true);
             this.dispose();
         }
+        else if(e.getSource()==biblioteca){
+            new TelaBiblioteca().setVisible(true);
+        }
         else if (e.getSource() == sair) {
             this.dispose();
         }
