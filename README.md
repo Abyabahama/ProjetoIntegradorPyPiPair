@@ -48,11 +48,11 @@ Para jogar o PyPIPair, você precisa ter um computador com acesso a internet.É 
 
 O PyPIPair foi desenvolvido como parte de um projeto integrador realizado pelo Grupo B - Lab 7 - Grupo B
 
-Alunos: Ana Beatriz Schlink
-	Bianca Aparecida Cardoso
-	Débora Witkowski
-	João Marques
-	Pedro Kobayashi
+Alunos: Ana Beatriz Schlink, 
+	Bianca Aparecida Cardoso, 
+	Débora Witkowski, 
+	João Marques, 
+	Pedro Kobayashi e 
 	Victor Simon
 	
 
