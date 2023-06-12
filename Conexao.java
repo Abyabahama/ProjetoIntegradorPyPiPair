@@ -6,7 +6,7 @@ public class Conexao {
     // Configurações do banco de dados
     private static final String URL = "jdbc:mysql://localhost:3306/bdjogo?useSSL=false"; // substitua "nome_do_banco" pelo nome do seu banco de dados
     private static final String USUARIO = "root"; // substitua "usuario" pelo usuário do seu banco de dados
-    private static final String SENHA = "Victorelais2004"; // substitua "senha" pela senha do seu banco de dados
+    private static final String SENHA = ""; // substitua "senha" pela senha do seu banco de dados
 
     // Método para estabelecer a conexão com o banco de dados
     public static Connection getConexao() {
