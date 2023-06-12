@@ -1,4 +1,4 @@
-package TrabalhoIntegrador;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -64,17 +64,17 @@ painel.setBackground(new Color(217, 255, 180));
 
             //JTextfields e JLabels 
  Dificuldade = new JLabel("Dificuldade : Médio"){};
-Dificuldade.setPreferredSize(new Dimension(300, 20));
+Dificuldade.setPreferredSize(new Dimension(220, 60));
 Dificuldade.setMaximumSize(Dificuldade.getPreferredSize());
-Dificuldade.setFont(new Font("PerguntaText", Font.BOLD, 16));
+Dificuldade.setFont(new Font("Poppins", Font.BOLD, 20));
 Dificuldade.setAlignmentX(CENTER_ALIGNMENT);
 painel.add(Dificuldade);
 
 
 
-            Pergunta = new JLabel("Digite a quinta pergunta :") {};
+Pergunta = new JLabel("Digite a primeira pergunta :") {};
 
-Pergunta.setPreferredSize(new Dimension(300, 20));
+Pergunta.setPreferredSize(new Dimension(1200, 45));
 Pergunta.setMaximumSize(Pergunta.getPreferredSize());
 Pergunta.setFont(new Font("PerguntaText", Font.BOLD, 16));
 Pergunta.setAlignmentX(CENTER_ALIGNMENT);
@@ -86,40 +86,10 @@ Pergunta.setAlignmentX(CENTER_ALIGNMENT);
             
 PerguntaUM = new JTextField() {};
 
-PerguntaUM.setPreferredSize(new Dimension(300, 20));
+PerguntaUM.setPreferredSize(new Dimension(600, 20));
 PerguntaUM.setMaximumSize(PerguntaUM.getPreferredSize());
 PerguntaUM.setFont(new Font("Pergunta", Font.BOLD, 16));
-PerguntaUM.setAlignmentX(CENTER_ALIGNMENT);
-
-
-
-
-
-
-
-
-
-
-//override textbox PerguntaUM
-
-PerguntaUM.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (PerguntaUM.getText().equals("Pergunta : ")) {
- PerguntaUM.setText("");
- PerguntaUM.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (PerguntaUM.getText().isEmpty()) {
- PerguntaUM.setText("Pergunta : ");
- PerguntaUM.setForeground(Color.GRAY);
- }
-}
-});
-
+PerguntaUM.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 painel.add(PerguntaUM);
 painel.add(Box.createRigidArea(new Dimension(1, 20)));
@@ -128,16 +98,16 @@ painel.add(Box.createRigidArea(new Dimension(1, 20)));
 
     
 
-SEISRESPOSTAS = new JLabel("Digite 6 pares de respostas : "){};
+SEISRESPOSTAS = new JLabel("Digite apenas um elemento do par: "){};
 
-SEISRESPOSTAS.setPreferredSize(new Dimension(300, 20));
+SEISRESPOSTAS.setPreferredSize(new Dimension(1000, 20));
 SEISRESPOSTAS.setMaximumSize(Pergunta.getPreferredSize());
 SEISRESPOSTAS.setFont(new Font("PerguntaText", Font.BOLD, 16));
 SEISRESPOSTAS.setAlignmentX(CENTER_ALIGNMENT);
 painel.add(SEISRESPOSTAS);
 
 painel.add(Box.createRigidArea(new Dimension(1, 40)));  
-RESPOSTAA = new JLabel("Digite o primeiro par de resposta : "){};
+RESPOSTAA = new JLabel("Digite a primeira resposta: "){};
 RESPOSTAA.setPreferredSize(new Dimension(300, 20));
 RESPOSTAA.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAA.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -147,41 +117,15 @@ painel.add(RESPOSTAA);
 
 RESPOSTAUM = new JTextField() {};
                 
-RESPOSTAUM.setPreferredSize(new Dimension(300, 20));
+RESPOSTAUM.setPreferredSize(new Dimension(600, 20));
 RESPOSTAUM.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTAUM.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTAUM.setAlignmentX(CENTER_ALIGNMENT);
-
-
-
-
-
-//override JtextField RESPOSTAUM
-
-RESPOSTAUM.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTAUM.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTAUM.setText("");
- RESPOSTAUM.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTAUM.getText().isEmpty()) {
- RESPOSTAUM.setText("Digite o par de resposta desejado : ");
- RESPOSTAUM.setForeground(Color.GRAY);
- }
-}
-});
-
-
+RESPOSTAUM.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 painel.add(RESPOSTAUM);
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAB = new JLabel("Digite o segundo par de resposta : "){};
+RESPOSTAB = new JLabel("Digite a segunda resposta : "){};
 RESPOSTAB.setPreferredSize(new Dimension(300, 20));
 RESPOSTAB.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAB.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -191,45 +135,16 @@ painel.add(RESPOSTAB);
 
 RESPOSTADOIS = new JTextField() {};
                 
-RESPOSTADOIS.setPreferredSize(new Dimension(300, 20));
+RESPOSTADOIS.setPreferredSize(new Dimension(600, 20));
 RESPOSTADOIS.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTADOIS.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTADOIS.setAlignmentX(CENTER_ALIGNMENT);
-
-
-
-
-
-
-
-
-//override RESPOSTADOIS
-
-RESPOSTADOIS.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTADOIS.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTADOIS.setText("");
- RESPOSTADOIS.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTADOIS.getText().isEmpty()) {
- RESPOSTADOIS.setText("Digite o par de resposta desejado : ");
- RESPOSTADOIS.setForeground(Color.GRAY);
- }
-}
-});
-
-
+RESPOSTADOIS.setAlignmentX(Component.RIGHT_ALIGNMENT);
 painel.add(Box.createRigidArea(new Dimension(1, 5)));
 painel.add(RESPOSTADOIS);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAC = new JLabel("Digite o terceiro par de resposta : "){};
+RESPOSTAC = new JLabel("Digite a terceira resposta: "){};
 RESPOSTAC.setPreferredSize(new Dimension(300, 20));
 RESPOSTAC.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAC.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -239,39 +154,10 @@ painel.add(RESPOSTAC);
 
 RESPOSTATRES = new JTextField() {};
                 
-RESPOSTATRES.setPreferredSize(new Dimension(300, 20));
+RESPOSTATRES.setPreferredSize(new Dimension(600, 20));
 RESPOSTATRES.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTATRES.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTATRES.setAlignmentX(CENTER_ALIGNMENT);
-
-
-
-
-
-
-
-
-
-//override RESPOSTATRES
-
-RESPOSTATRES.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTATRES.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTATRES.setText("");
- RESPOSTATRES.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTATRES.getText().isEmpty()) {
- RESPOSTATRES.setText("Digite o par de resposta desejado : ");
- RESPOSTATRES.setForeground(Color.GRAY);
- }
-}
-});
-
+RESPOSTATRES.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 5)));
@@ -279,7 +165,7 @@ painel.add(RESPOSTATRES);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAD = new JLabel("Digite o quarto par de resposta : "){};
+RESPOSTAD = new JLabel("Digite a quarta resposta : "){};
 RESPOSTAD.setPreferredSize(new Dimension(300, 20));
 RESPOSTAD.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAD.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -288,39 +174,10 @@ painel.add(RESPOSTAD);
 
 
 RESPOSTAQUATRO = new JTextField() {};               
-RESPOSTAQUATRO.setPreferredSize(new Dimension(300, 20));
+RESPOSTAQUATRO.setPreferredSize(new Dimension(600, 20));
 RESPOSTAQUATRO.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTAQUATRO.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTAQUATRO.setAlignmentX(CENTER_ALIGNMENT);
-
-
-
-
-
-
-
-
-
-//override RESPOSTAQUATRO
-
-RESPOSTAQUATRO.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTAQUATRO.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTAQUATRO.setText("");
- RESPOSTAQUATRO.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTAQUATRO.getText().isEmpty()) {
- RESPOSTAQUATRO.setText("Digite o par de resposta desejado : ");
- RESPOSTAQUATRO.setForeground(Color.GRAY);
- }
-}
-});
-
+RESPOSTAQUATRO.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -328,7 +185,7 @@ painel.add(Box.createRigidArea(new Dimension(1, 5)));
 painel.add(RESPOSTAQUATRO);
 
 
-RESPOSTAE = new JLabel("Digite o quinto par de resposta : "){};
+RESPOSTAE = new JLabel("Digite a quinta resposta : "){};
 RESPOSTAE.setPreferredSize(new Dimension(300, 20));
 RESPOSTAE.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAE.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -337,36 +194,16 @@ painel.add(RESPOSTAE);
 
 
 RESPOSTACINCO = new JTextField() {};               
-RESPOSTACINCO.setPreferredSize(new Dimension(300, 20));
+RESPOSTACINCO.setPreferredSize(new Dimension(600, 20));
 RESPOSTACINCO.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTACINCO.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTACINCO.setAlignmentX(CENTER_ALIGNMENT);
-
-//override RESPOSTACINCO
-
-RESPOSTACINCO.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTACINCO.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTACINCO.setText("");
- RESPOSTACINCO.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTACINCO.getText().isEmpty()) {
- RESPOSTACINCO.setText("Digite o par de resposta desejado : ");
- RESPOSTACINCO.setForeground(Color.GRAY);
- }
-}
-});
+RESPOSTACINCO.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 5)));
 painel.add(RESPOSTACINCO);
 
-RESPOSTAF = new JLabel("Digite o sexto par de resposta : "){};
+RESPOSTAF = new JLabel("Digite a sexta resposta : "){};
 RESPOSTAF.setPreferredSize(new Dimension(300, 20));
 RESPOSTAF.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAF.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -375,40 +212,16 @@ painel.add(RESPOSTAF);
 
 
 RESPOSTASEIS = new JTextField() {};               
-RESPOSTASEIS.setPreferredSize(new Dimension(300, 20));
+RESPOSTASEIS.setPreferredSize(new Dimension(600, 20));
 RESPOSTASEIS.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTASEIS.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTASEIS.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTASEIS.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
-//override RESPOSTASEIS
-
-RESPOSTASEIS.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTASEIS.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTASEIS.setText("");
- RESPOSTASEIS.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTASEIS.getText().isEmpty()) {
- RESPOSTASEIS.setText("Digite o par de resposta desejado : ");
- RESPOSTASEIS.setForeground(Color.GRAY);
- }
-}
-});
 
 painel.add(Box.createRigidArea(new Dimension(1, 5)));
 painel.add(RESPOSTASEIS);
 
-
-
-
-
-
-RESPOSTACERTA = new JLabel("Digite o par que seja a resposta certa : ") {};
+RESPOSTACERTA = new JLabel("Digite o elemento que será o correto: ") {};
 RESPOSTACERTA.setPreferredSize(new Dimension(300, 20));
 RESPOSTACERTA.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTACERTA.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -418,38 +231,12 @@ painel.add(RESPOSTACERTA);
 
 
 RESPOSTACORRETA = new JTextField() {};
-RESPOSTACORRETA.setPreferredSize(new Dimension(300, 20));
+RESPOSTACORRETA.setPreferredSize(new Dimension(600, 20));
 RESPOSTACORRETA.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTACORRETA.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTACORRETA.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTACORRETA.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
-
-
-
-
-
-
-
-//override RESPOSTACORRETA
-
-RESPOSTACORRETA.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTACORRETA.getText().equals("Par de resposta correto desejado : ")) {
- RESPOSTACORRETA.setText("");
- RESPOSTACORRETA.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTACORRETA.getText().isEmpty()) {
- RESPOSTACORRETA.setText("Par de resposta correto desejado : ");
- RESPOSTACORRETA.setForeground(Color.GRAY);
- }
-}
-});
 
 painel.add(RESPOSTACORRETA);
 
@@ -468,7 +255,7 @@ painel.add(RESPOSTACORRETA);
 
 //JButtons
 painel.add(Box.createRigidArea(new Dimension(1, 40)));
-NEXT = new JButton("avancar"){{
+NEXT = new JButton("Avançar"){{
 
 setBounds(1240,700,300,50);
 setMaximumSize(getSize());
@@ -481,9 +268,9 @@ setForeground(new Color(255, 255, 255));
 }};
 
 
-painel.add(Box.createRigidArea(new Dimension(1, 40)));
+painel.add(Box.createRigidArea(new Dimension(1, 20)));
 
-VOLTAR = new JButton("retornar"){{
+VOLTAR = new JButton("Retornar"){{
 setBounds(1,700,300,50);
 setMaximumSize(getSize());
 setFont(new Font("Retorno", Font.BOLD, 20));
@@ -496,7 +283,7 @@ setForeground(new Color(255, 255, 255));
 
 
 painel.add(NEXT);
-painel.add(Box.createRigidArea(new Dimension(1, 40)));
+painel.add(Box.createRigidArea(new Dimension(1, 10)));
 painel.add(VOLTAR);
 
 

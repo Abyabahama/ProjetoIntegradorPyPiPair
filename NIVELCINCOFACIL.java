@@ -1,6 +1,9 @@
-package TrabalhoIntegrador;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.AbstractDocument.Content;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -30,6 +33,12 @@ public class NIVELCINCOFACIL extends JFrame {
     JLabel RESPOSTAD;
     JButton NEXT;
     JButton VOLTAR;
+    String respostaUM;
+    String respostaDOIS;
+    String resposta3;
+    String respostaQUATRO;
+    String respostaCERTA;
+    String pergunta;
 
 
  NIVELCINCOFACIL() {
@@ -60,17 +69,17 @@ painel.setBackground(new Color(217, 255, 180));
 
             //JTextfields e JLabels 
  Dificuldade = new JLabel("Dificuldade : Fácil"){};
-Dificuldade.setPreferredSize(new Dimension(300, 20));
+Dificuldade.setPreferredSize(new Dimension(220, 60));
 Dificuldade.setMaximumSize(Dificuldade.getPreferredSize());
-Dificuldade.setFont(new Font("PerguntaText", Font.BOLD, 16));
+Dificuldade.setFont(new Font("Poppins", Font.BOLD, 20));
 Dificuldade.setAlignmentX(CENTER_ALIGNMENT);
 painel.add(Dificuldade);
 
 
 
-            Pergunta = new JLabel("Digite a quinta pergunta :") {};
+Pergunta = new JLabel("Digite a primeira pergunta :") {};
 
-Pergunta.setPreferredSize(new Dimension(300, 20));
+Pergunta.setPreferredSize(new Dimension(1200, 45));
 Pergunta.setMaximumSize(Pergunta.getPreferredSize());
 Pergunta.setFont(new Font("PerguntaText", Font.BOLD, 16));
 Pergunta.setAlignmentX(CENTER_ALIGNMENT);
@@ -82,10 +91,10 @@ Pergunta.setAlignmentX(CENTER_ALIGNMENT);
             
 PerguntaUM = new JTextField() {};
 
-PerguntaUM.setPreferredSize(new Dimension(300, 20));
+PerguntaUM.setPreferredSize(new Dimension(600, 20));
 PerguntaUM.setMaximumSize(PerguntaUM.getPreferredSize());
 PerguntaUM.setFont(new Font("Pergunta", Font.BOLD, 16));
-PerguntaUM.setAlignmentX(CENTER_ALIGNMENT);
+PerguntaUM.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -96,25 +105,7 @@ PerguntaUM.setAlignmentX(CENTER_ALIGNMENT);
 
 
 
-//override textbox PerguntaUM
 
-PerguntaUM.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (PerguntaUM.getText().equals("Pergunta : ")) {
- PerguntaUM.setText("");
- PerguntaUM.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (PerguntaUM.getText().isEmpty()) {
- PerguntaUM.setText("Pergunta : ");
- PerguntaUM.setForeground(Color.GRAY);
- }
-}
-});
 
 
 painel.add(PerguntaUM);
@@ -124,16 +115,16 @@ painel.add(Box.createRigidArea(new Dimension(1, 20)));
 
     
 
-QUATRORESPOSTAS = new JLabel("Digite 4 pares de respostas : "){};
+QUATRORESPOSTAS = new JLabel("Digite apenas um elemento do par: "){};
 
-QUATRORESPOSTAS.setPreferredSize(new Dimension(300, 20));
+QUATRORESPOSTAS.setPreferredSize(new Dimension(1000, 20));
 QUATRORESPOSTAS.setMaximumSize(Pergunta.getPreferredSize());
 QUATRORESPOSTAS.setFont(new Font("PerguntaText", Font.BOLD, 16));
 QUATRORESPOSTAS.setAlignmentX(CENTER_ALIGNMENT);
 painel.add(QUATRORESPOSTAS);
 
 painel.add(Box.createRigidArea(new Dimension(1, 40)));  
-RESPOSTAA = new JLabel("Digite o primeiro par de resposta : "){};
+RESPOSTAA = new JLabel("Digite a primeira resposta : "){};
 RESPOSTAA.setPreferredSize(new Dimension(300, 20));
 RESPOSTAA.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAA.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -143,10 +134,10 @@ painel.add(RESPOSTAA);
 
 RESPOSTAUM = new JTextField() {};
                 
-RESPOSTAUM.setPreferredSize(new Dimension(300, 20));
+RESPOSTAUM.setPreferredSize(new Dimension(600, 20));
 RESPOSTAUM.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTAUM.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTAUM.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTAUM.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -157,32 +148,14 @@ RESPOSTAUM.setAlignmentX(CENTER_ALIGNMENT);
 
 
 
-//override JtextField RESPOSTAUM
 
-RESPOSTAUM.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTAUM.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTAUM.setText("");
- RESPOSTAUM.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTAUM.getText().isEmpty()) {
- RESPOSTAUM.setText("Digite o par de resposta desejado : ");
- RESPOSTAUM.setForeground(Color.GRAY);
- }
-}
-});
 
 
 
 painel.add(RESPOSTAUM);
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAB = new JLabel("Digite o segundo par de resposta : "){};
+RESPOSTAB = new JLabel("Digite a segunda resposta : "){};
 RESPOSTAB.setPreferredSize(new Dimension(300, 20));
 RESPOSTAB.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAB.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -192,10 +165,10 @@ painel.add(RESPOSTAB);
 
 RESPOSTADOIS = new JTextField() {};
                 
-RESPOSTADOIS.setPreferredSize(new Dimension(300, 20));
+RESPOSTADOIS.setPreferredSize(new Dimension(600, 20));
 RESPOSTADOIS.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTADOIS.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTADOIS.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTADOIS.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -204,25 +177,6 @@ RESPOSTADOIS.setAlignmentX(CENTER_ALIGNMENT);
 
 
 
-//override RESPOSTADOIS
-
-RESPOSTADOIS.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTADOIS.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTADOIS.setText("");
- RESPOSTADOIS.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTADOIS.getText().isEmpty()) {
- RESPOSTADOIS.setText("Digite o par de resposta desejado : ");
- RESPOSTADOIS.setForeground(Color.GRAY);
- }
-}
-});
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 5)));
@@ -230,7 +184,7 @@ painel.add(RESPOSTADOIS);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAC = new JLabel("Digite o terceiro par de resposta : "){};
+RESPOSTAC = new JLabel("Digite a terceira resposta: "){};
 RESPOSTAC.setPreferredSize(new Dimension(300, 20));
 RESPOSTAC.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAC.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -240,10 +194,10 @@ painel.add(RESPOSTAC);
 
 RESPOSTATRES = new JTextField() {};
                 
-RESPOSTATRES.setPreferredSize(new Dimension(300, 20));
+RESPOSTATRES.setPreferredSize(new Dimension(600, 20));
 RESPOSTATRES.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTATRES.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTATRES.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTATRES.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -253,25 +207,7 @@ RESPOSTATRES.setAlignmentX(CENTER_ALIGNMENT);
 
 
 
-//override RESPOSTATRES
 
-RESPOSTATRES.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTATRES.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTATRES.setText("");
- RESPOSTATRES.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTATRES.getText().isEmpty()) {
- RESPOSTATRES.setText("Digite o par de resposta desejado : ");
- RESPOSTATRES.setForeground(Color.GRAY);
- }
-}
-});
 
 
 
@@ -280,7 +216,7 @@ painel.add(RESPOSTATRES);
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 10)));  
-RESPOSTAD = new JLabel("Digite o segundo par de resposta : "){};
+RESPOSTAD = new JLabel("Digite a quarta resposta: "){};
 RESPOSTAD.setPreferredSize(new Dimension(300, 20));
 RESPOSTAD.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTAD.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -290,10 +226,10 @@ painel.add(RESPOSTAD);
 
 RESPOSTAQUATRO = new JTextField() {};
                 
-RESPOSTAQUATRO.setPreferredSize(new Dimension(300, 20));
+RESPOSTAQUATRO.setPreferredSize(new Dimension(600, 20));
 RESPOSTAQUATRO.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTAQUATRO.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTAQUATRO.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTAQUATRO.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -303,25 +239,7 @@ RESPOSTAQUATRO.setAlignmentX(CENTER_ALIGNMENT);
 
 
 
-//override RESPOSTAQUATRO
 
-RESPOSTAQUATRO.addFocusListener(new FocusAdapter() {
-            @Override
-public void focusGained(FocusEvent e) {
-if (RESPOSTAQUATRO.getText().equals("Digite o par de resposta desejado : ")) {
- RESPOSTAQUATRO.setText("");
- RESPOSTAQUATRO.setForeground(Color.BLACK);
-}
-}
-
-            @Override
-public void focusLost(FocusEvent e) {
-if (RESPOSTAQUATRO.getText().isEmpty()) {
- RESPOSTAQUATRO.setText("Digite o par de resposta desejado : ");
- RESPOSTAQUATRO.setForeground(Color.GRAY);
- }
-}
-});
 
 
 
@@ -333,7 +251,7 @@ painel.add(Box.createRigidArea(new Dimension(1, 5)));
 painel.add(RESPOSTAQUATRO);
 
 
-RESPOSTACERTA = new JLabel("Digite o par que seja a resposta certa : ") {};
+RESPOSTACERTA = new JLabel("Digite o elemento que será o correto: ") {};
 RESPOSTACERTA.setPreferredSize(new Dimension(300, 20));
 RESPOSTACERTA.setMaximumSize(Pergunta.getPreferredSize());
 RESPOSTACERTA.setFont(new Font("PerguntaText", Font.BOLD, 16));
@@ -343,10 +261,10 @@ painel.add(RESPOSTACERTA);
 
 
 RESPOSTACORRETA = new JTextField() {};
-RESPOSTACORRETA.setPreferredSize(new Dimension(300, 20));
+RESPOSTACORRETA.setPreferredSize(new Dimension(600, 20));
 RESPOSTACORRETA.setMaximumSize(PerguntaUM.getPreferredSize());
 RESPOSTACORRETA.setFont(new Font("Pergunta", Font.BOLD, 16));
-RESPOSTACORRETA.setAlignmentX(CENTER_ALIGNMENT);
+RESPOSTACORRETA.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 
 
@@ -361,7 +279,7 @@ RESPOSTACORRETA.setAlignmentX(CENTER_ALIGNMENT);
 RESPOSTACORRETA.addFocusListener(new FocusAdapter() {
             @Override
 public void focusGained(FocusEvent e) {
-if (RESPOSTACORRETA.getText().equals("Par de resposta correto desejado : ")) {
+if (RESPOSTACORRETA.getText().equals("Digite um elemento da resposta:")) {
  RESPOSTACORRETA.setText("");
  RESPOSTACORRETA.setForeground(Color.BLACK);
 }
@@ -370,7 +288,7 @@ if (RESPOSTACORRETA.getText().equals("Par de resposta correto desejado : ")) {
             @Override
 public void focusLost(FocusEvent e) {
 if (RESPOSTACORRETA.getText().isEmpty()) {
- RESPOSTACORRETA.setText("Par de resposta correto desejado : ");
+ RESPOSTACORRETA.setText("Digite um elemento da resposta:");
  RESPOSTACORRETA.setForeground(Color.GRAY);
  }
 }
@@ -386,17 +304,9 @@ painel.add(RESPOSTACORRETA);
 
 
 
-
-
-
-
-
-
-
-
 //JButtons
 painel.add(Box.createRigidArea(new Dimension(1, 40)));
-NEXT = new JButton("avancar"){{
+NEXT = new JButton("Avançar"){{
 
 setBounds(1240,700,300,50);
 setMaximumSize(getSize());
@@ -406,12 +316,56 @@ setAlignmentX(CENTER_ALIGNMENT);
 setBackground(new Color(52, 235, 143));
 setForeground(new Color(255, 255, 255));
 
+NIVELUMMEDIO nivelummedio = new NIVELUMMEDIO();
+                    nivelummedio.setVisible(true);
+                    dispose();
+
 }};
 
 
-painel.add(Box.createRigidArea(new Dimension(1, 40)));
 
-VOLTAR = new JButton("retornar"){{
+
+
+
+NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+         pergunta = PerguntaUM.getText();
+         respostaUM = RESPOSTAUM.getText();
+         respostaDOIS = RESPOSTADOIS.getText();
+         resposta3 = RESPOSTATRES.getText();
+         respostaQUATRO = RESPOSTAQUATRO.getText();
+         respostaCERTA = RESPOSTACERTA.getText();
+
+        
+
+        // Conexão com o banco de dados
+        Connection conexao = Conexao.getConexao();
+
+        try {
+            // Inserir a pergunta no banco de dados
+            String sql = "INSERT INTO questoes (enunciado) VALUES (?)";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1, pergunta);
+            statement.executeUpdate();
+            statement.close();
+
+            // Realizar outras ações após a inserção da pergunta
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Tratar a exceção adequadamente
+        } finally {
+            // Fechar a conexão com o banco de dados
+            Conexao.fecharConexao(conexao);
+        }
+    }
+});
+
+
+painel.add(Box.createRigidArea(new Dimension(1, 20)));
+
+VOLTAR = new JButton("Retornar"){{
 setBounds(1,700,300,50);
 setMaximumSize(getSize());
 setFont(new Font("Retorno", Font.BOLD, 20));
@@ -424,7 +378,7 @@ setForeground(new Color(255, 255, 255));
 
 
 painel.add(NEXT);
-painel.add(Box.createRigidArea(new Dimension(1, 40)));
+painel.add(Box.createRigidArea(new Dimension(1, 10)));
 painel.add(VOLTAR);
 
 
