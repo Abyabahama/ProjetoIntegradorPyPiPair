@@ -19,7 +19,7 @@ Para jogar o PyPIPair, você precisa ter um computador com acesso a internet.É 
 
 1. Clone ou faça o download do repositório do jogo em seu computador.
 
-2. Abra o arquivo `PyPIPair` em seu sistemas de arquivos.
+2. Abra o arquivo `PyPIPair` em seu sistema de arquivos.
 
 3. Na tela inicial do jogo, faça o login do jogo ou crie uma conta
 
