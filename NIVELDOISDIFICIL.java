@@ -302,6 +302,21 @@ NEXT = new JButton("Avançar");
         NEXT.setBackground(new Color(52, 235, 143));
         NEXT.setForeground(new Color(255, 255, 255));
 
+        NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        NIVELTRESDIFICIL niveltresdificil = new NIVELTRESDIFICIL();
+        JFrame frame = new JFrame("Perguntas"); // Crie uma nova instância de JFrame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Defina a ação de fechamento adequada
+        frame.getContentPane().add(niveltresdificil); // Adicione o painel da nova tela ao conteúdo do JFrame
+        frame.pack(); // Redimensione a janela de acordo com o conteúdo
+        frame.setLocationRelativeTo(null); // Centralize a janela na tela
+        frame.setVisible(true); // Torne a janela visível
+        JFrame janelaAtual = (JFrame) SwingUtilities.getWindowAncestor(painel);
+        janelaAtual.dispose();
+    }
+});
+
         JButton VOLTAR = new JButton("Retornar");
         VOLTAR.setBounds(1, 700, 300, 50);
         VOLTAR.setMaximumSize(VOLTAR.getSize());

@@ -301,6 +301,22 @@ NEXT = new JButton("Avançar");
         NEXT.setAlignmentX(Component.LEFT_ALIGNMENT);
         NEXT.setBackground(new Color(52, 235, 143));
         NEXT.setForeground(new Color(255, 255, 255));
+         NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        TelaCartasFacil telaCartasFacil = new TelaCartasFacil();
+        
+
+        // Trocar de tela
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(painel);
+        frame.getContentPane().removeAll();
+        frame.getContentPane().add(telaCartasFacil);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        JFrame janelaAtual = (JFrame) SwingUtilities.getWindowAncestor(painel);
+        janelaAtual.dispose();
+    }
+});
 
         JButton VOLTAR = new JButton("Retornar");
         VOLTAR.setBounds(1, 700, 300, 50);

@@ -316,11 +316,23 @@ setAlignmentX(CENTER_ALIGNMENT);
 setBackground(new Color(52, 235, 143));
 setForeground(new Color(255, 255, 255));
 
-NIVELUMMEDIO nivelummedio = new NIVELUMMEDIO();
-                    nivelummedio.setVisible(true);
-                    dispose();
+
 
 }};
+
+NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        NIVELCINCOFACIL nivelcincofacil = new NIVELCINCOFACIL();
+        
+
+        // Trocar de tela
+        painel.removeAll();
+        painel.add(nivelcincofacil);
+        painel.revalidate();
+        painel.repaint();
+    }
+});
 
 
 

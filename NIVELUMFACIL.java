@@ -305,51 +305,30 @@ setAlignmentX(CENTER_ALIGNMENT);
 setBackground(new Color(52, 235, 143));
 setForeground(new Color(255, 255, 255));
 
-NIVELUMMEDIO nivelummedio = new NIVELUMMEDIO();
-                    nivelummedio.setVisible(true);
-                    dispose();
+
 
 }};
-
-
-
-
-
-
 NEXT.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-         pergunta = PerguntaUM.getText();
-         respostaUM = RESPOSTAUM.getText();
-         respostaDOIS = RESPOSTADOIS.getText();
-         resposta3 = RESPOSTATRES.getText();
-         respostaQUATRO = RESPOSTAQUATRO.getText();
-         respostaCERTA = RESPOSTACERTA.getText();
-
+        NIVELDOISFACIL nivelDoisFacil = new NIVELDOISFACIL();
         
 
-        // Conexão com o banco de dados
-        Connection conexao = Conexao.getConexao();
-
-        try {
-            // Inserir a pergunta no banco de dados
-            String sql = "INSERT INTO questoes (enunciado) VALUES (?)";
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setString(1, pergunta);
-            statement.executeUpdate();
-            statement.close();
-
-            // Realizar outras ações após a inserção da pergunta
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            // Tratar a exceção adequadamente
-        } finally {
-            // Fechar a conexão com o banco de dados
-            Conexao.fecharConexao(conexao);
-        }
+        // Trocar de tela
+        painel.removeAll();
+        painel.add(nivelDoisFacil);
+        painel.revalidate();
+        painel.repaint();
     }
 });
+
+
+
+
+
+
+
+
 
 
 painel.add(Box.createRigidArea(new Dimension(1, 20)));
@@ -379,6 +358,8 @@ painel.add(VOLTAR);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        
 
     
 

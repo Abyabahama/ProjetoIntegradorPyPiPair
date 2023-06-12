@@ -316,11 +316,23 @@ setAlignmentX(CENTER_ALIGNMENT);
 setBackground(new Color(52, 235, 143));
 setForeground(new Color(255, 255, 255));
 
-NIVELUMMEDIO nivelummedio = new NIVELUMMEDIO();
-                    nivelummedio.setVisible(true);
-                    dispose();
+
 
 }};
+
+NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        NIVELQUATROFACIL nivelquatrofacil = new NIVELQUATROFACIL();
+        
+
+        // Trocar de tela
+        painel.removeAll();
+        painel.add(nivelquatrofacil);
+        painel.revalidate();
+        painel.repaint();
+    }
+});
 
 
 
@@ -329,6 +341,7 @@ NIVELUMMEDIO nivelummedio = new NIVELUMMEDIO();
 
 NEXT.addActionListener(new ActionListener() {
     @Override
+    
     public void actionPerformed(ActionEvent e) {
          pergunta = PerguntaUM.getText();
          respostaUM = RESPOSTAUM.getText();

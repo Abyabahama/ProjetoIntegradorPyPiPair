@@ -267,6 +267,20 @@ setForeground(new Color(255, 255, 255));
 
 }};
 
+NEXT.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        NIVELDOISMEDIO niveldoismedio = new NIVELDOISMEDIO();
+        
+
+        // Trocar de tela
+        painel.removeAll();
+        painel.add(niveldoismedio);
+        painel.revalidate();
+        painel.repaint();
+    }
+});
+
 
 painel.add(Box.createRigidArea(new Dimension(1, 40)));
 
