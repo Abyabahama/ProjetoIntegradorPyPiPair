@@ -176,6 +176,11 @@ public class TelaCartasFacil4 extends JFrame implements ActionListener{
     }
     ClickedButton4 clickedButton = new ClickedButton4();
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == menu) {
+            this.dispose();
+            new TelaInicial();
+        }
         Carta cartaSelecionada = (Carta) e.getSource();
     
         if (cartaSelecionada.isVirada()) {

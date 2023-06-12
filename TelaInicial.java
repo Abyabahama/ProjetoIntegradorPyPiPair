@@ -1,12 +1,12 @@
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class TelaInicial extends JFrame implements ActionListener{
-    private JLabel logo, subtitulo;
+    private JLabel logo;
     private ImageIcon imgLogo;
     //Criando os botões
     JButton jogar;
@@ -113,12 +113,15 @@ public class TelaInicial extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jogar){
-            this.dispose();
             new TelaCartasFacil().setVisible(true);
+            this.dispose();
         }
         else if (e.getSource() == ranking) {
-            this.dispose();
             new Rank().setVisible(true);
+            this.dispose();
+        }
+        else if (e.getSource() == sair) {
+            this.dispose();
         }
     }
 }

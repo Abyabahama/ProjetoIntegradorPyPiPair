@@ -12,7 +12,7 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
     JLabel logo;
     JButton menu;
     JLabel nivel, pontos, tempo;
-    Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8;
+    Carta carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12;
     Carta cartaSelecionada1;
     Carta cartaSelecionada2; 
     List<String> respostas;
@@ -97,7 +97,7 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         painelPergunta.add(pergunta);
 
         //Criação da área de cartas do jogo
-        JPanel painelCartas = new JPanel(new GridLayout(4, 6, 25, 25));
+        JPanel painelCartas = new JPanel(new GridLayout(4, 8, 25, 25));
         painelCartas.setBackground(new Color(217, 255, 180));
 
         //Criação da lista de respostas
@@ -114,7 +114,10 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         carta6 = new Carta(respostas.get(5));
         carta7 = new Carta(respostas.get(6));
         carta8 = new Carta(respostas.get(7));
-       
+        carta9 = new Carta(respostas.get(8));
+        carta10 = new Carta(respostas.get(9));
+        carta11 = new Carta(respostas.get(10));
+        carta12 = new Carta(respostas.get(11));        
 
         
 
@@ -127,6 +130,11 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         carta6.addActionListener(this);
         carta7.addActionListener(this);
         carta8.addActionListener(this);
+        carta9.addActionListener(this);
+        carta10.addActionListener(this);
+        carta11.addActionListener(this);
+        carta12.addActionListener(this);
+       
        
 
 
@@ -140,16 +148,26 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(carta1);
         painelCartas.add(carta2);
         painelCartas.add(carta3);
         painelCartas.add(carta4);
-        painelCartas.add(Box.createRigidArea(getPreferredSize()));
-        painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(carta5);
         painelCartas.add(carta6);
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(carta7);
         painelCartas.add(carta8);
+        painelCartas.add(carta9);
+        painelCartas.add(carta10);
+        painelCartas.add(carta11);
+        painelCartas.add(carta12);
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
+        painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
         painelCartas.add(Box.createRigidArea(getPreferredSize()));
@@ -183,6 +201,10 @@ public class TelaCartasMedia3 extends JFrame implements ActionListener{
     }
     ClickedButtonMedia3 clickedButton = new ClickedButtonMedia3();
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == menu) {
+            this.dispose();
+            new TelaInicial();
+        }
         Carta cartaSelecionada = (Carta) e.getSource();
     
         if (cartaSelecionada.isVirada()) {
