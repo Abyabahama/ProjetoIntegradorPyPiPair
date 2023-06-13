@@ -14,9 +14,14 @@ public class TelaLogin extends JFrame implements ActionListener{
     private JTextField emailJTextField, nomeJTextField;
     private JButton entrar, criarConta;
     private TextPrompt emailTextPrompt, nomeTextPrompt;
+    public String nomeProfessor;
 
 
     TelaLogin() {
+        this("");
+    }
+    TelaLogin(String nomeProfessor){ 
+        
         super("PyPIPair");
         //Montando o painel do logo
         JPanel painelTelaLogin = new JPanel(new BorderLayout());
@@ -109,20 +114,32 @@ public class TelaLogin extends JFrame implements ActionListener{
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource()==criarConta){
-            this.dispose();
-            new TelaCadastro().setVisible(true);
-        }
-        else if (e.getSource()==entrar){
-            if (nomeJTextField.getText().isEmpty() || emailJTextField.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Campos não preenchidos. \nTente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Bem vindo ao PyPIPair, " + nomeJTextField.getText(), "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+    public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == criarConta) {
+        this.dispose();
+        new TelaCadastro().setVisible(true);
+    } else if (e.getSource() == entrar) {
+        if (nomeJTextField.getText().isEmpty() || emailJTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Campos não preenchidos. \nTente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            String nome = nomeJTextField.getText();
+            String email = emailJTextField.getText();
+
+            if (nome.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nome é obrigatório", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+            } else if (nome.equalsIgnoreCase(nomeProfessor) && email.equalsIgnoreCase(TelaCadastro.getNomeProfessor())) {
+                JOptionPane.showMessageDialog(this, "Bem vindo ao PyPIPair, Professor " + nome, "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+                // Redirecionar para a tela NIVELFACILUM
+                new NIVELUMFACIL().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Bem vindo ao PyPIPair, " + nome, "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+                // Faça o que for necessário para o login do aluno
                 new TelaInicial().setVisible(true);
                 this.dispose();
             }
         }
-    }  
+    }
+}
+
 }

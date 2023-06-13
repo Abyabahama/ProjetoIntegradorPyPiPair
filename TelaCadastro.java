@@ -13,6 +13,7 @@ public class TelaCadastro extends JFrame implements ActionListener{
     private ImageIcon imgLogo;
     private TextPrompt nomeTP, raTP, emailTP, confEmailTP;
     private JButton cadastrar;
+    public static String nomeProfessor;
 
     TelaCadastro(){
         super("PyPIPair");
@@ -109,21 +110,38 @@ public class TelaCadastro extends JFrame implements ActionListener{
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource()==cadastrar){
-            if (nome.getText().isEmpty() || ra.getText().isEmpty() || email.getText().isEmpty() || confEmail.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Um ou mais campos não preenchidos. \nTente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+    public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == cadastrar) {
+        String raText = ra.getText();
+        if (nome.getText().isEmpty() || email.getText().isEmpty() || confEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Um ou mais campos não preenchidos. \nTente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+        } else if (raText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso como professor", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+            nomeProfessor = nome.getText(); 
+                
+            if (email.getText().equals(nomeProfessor)) {
+                JOptionPane.showMessageDialog(this, "Bem vindo ao PyPIPair, Professor " + nomeProfessor + " ! Vamos começar a editar as perguntas", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+                new NIVELUMFACIL().setVisible(true);
+                this.dispose();
+            } else {
+                new NIVELUMFACIL().setVisible(true);
+                this.dispose();
             }
-            else {
-                if (email.getText().equals(confEmail.getText())){
-                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
-                    new TelaInicial().setVisible(true);
-                    this.dispose();
-                }
-                else {
-                    JOptionPane.showMessageDialog(this, "Confirmação de Email falhou. \n Tente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
-                }
+        } else {
+            if (email.getText().equals(confEmail.getText())) {
+                JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
+                new TelaLogin(nome.getText()).setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Confirmação de Email falhou. \n Tente novamente", "PyPIPair", JOptionPane.PLAIN_MESSAGE);
             }
         }
+    }
+}
+
+
+
+     public static String getNomeProfessor() {
+        return nomeProfessor;
     }
 }

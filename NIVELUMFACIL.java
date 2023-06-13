@@ -340,9 +340,23 @@ setFont(new Font("Retorno", Font.BOLD, 20));
 setAlignmentX(CENTER_ALIGNMENT);
 setBackground(new Color(255, 0, 0));
 setForeground(new Color(255, 255, 255));
-
-
+addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Fechar a tela atual
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+            frame.dispose();
+            
+            // Abrir a tela TelaLogin
+            TelaLogin telaLogin = new TelaLogin();
+            telaLogin.setVisible(true);
+        }
+    });
 }};
+
+
+
+
 
 
 painel.add(NEXT);
